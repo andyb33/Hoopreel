@@ -8,39 +8,51 @@
 </head>
 <body>
   <header class="topbar">
-    <div>
-      <p class="eyebrow">YAHTZEE-INSPIRED NBA STRATEGY</p>
-      <h1>NBA Roulette</h1>
+    <div class="brand-lockup">
+      <div class="brand-mark" aria-hidden="true"><span></span></div>
+      <div>
+        <p class="eyebrow">BASKETBALL STRATEGY GAME</p>
+        <h1>NBA <span>Roulette</span></h1>
+      </div>
     </div>
-    <button id="new-game" class="secondary">New Game</button>
+    <div class="header-actions">
+      <div class="turn-chip"><span>Turn</span><strong id="header-turn">1 / 14</strong></div>
+      <button id="new-game" class="secondary">New game</button>
+    </div>
   </header>
 
   <main class="layout">
     <section class="game-panel">
       <div class="progress-row">
-        <span id="turn-label">Turn 1 / 14</span>
-        <span id="spin-label">Ready to spin</span>
+        <div>
+          <p class="stage-kicker">THE DRAW</p>
+          <h2>Build your next scoring play</h2>
+        </div>
+        <div class="spin-status">
+          <span id="turn-label">Turn 1 / 14</span>
+          <strong id="spin-label">Ready to spin</strong>
+        </div>
       </div>
 
       <div class="roulette" aria-label="Season, team, and player roulette">
         <button class="slot" data-keep="season" disabled>
-          <span class="slot-label">Season</span>
-          <strong id="season-value">—</strong>
-          <span class="keep-text">Keep</span>
+          <span class="slot-header"><span class="slot-label">Season</span><span class="lock-glyph" aria-hidden="true"></span></span>
+          <span class="reel-window"><span class="reel-value" id="season-value">—</span></span>
+          <span class="keep-text">Keep season</span>
         </button>
         <button class="slot" data-keep="team" disabled>
-          <span class="slot-label">Team</span>
-          <strong id="team-value">—</strong>
-          <span class="keep-text">Keep</span>
+          <span class="slot-header"><span class="slot-label">Team</span><span class="lock-glyph" aria-hidden="true"></span></span>
+          <span class="reel-window"><span class="reel-value" id="team-value">—</span></span>
+          <span class="keep-text">Keep team</span>
         </button>
         <button class="slot player-slot" data-keep="player" disabled>
-          <span class="slot-label">Player</span>
-          <strong id="player-value">—</strong>
-          <span class="keep-text">Keep</span>
+          <span class="slot-header"><span class="slot-label">Player</span><span class="lock-glyph" aria-hidden="true"></span></span>
+          <span class="reel-window"><span class="reel-value" id="player-value">—</span></span>
+          <span class="keep-text">Keep player</span>
         </button>
       </div>
 
-      <button id="spin" class="spin-button">Spin</button>
+      <button id="spin" class="spin-button"><span class="spin-icon" aria-hidden="true">↻</span><span class="spin-copy">Spin</span><small id="spin-count">3 spins available</small></button>
       <p id="message" class="message" role="status"></p>
 
       <article id="player-card" class="player-card hidden">
@@ -59,19 +71,24 @@
     <aside class="score-panel">
       <div class="score-header">
         <div>
-          <span>Total</span>
+          <span>Score</span>
           <strong id="total-score">0</strong>
         </div>
         <div>
-          <span>Upper</span>
-          <strong><span id="upper-score">0</span> / 120</strong>
+          <span>Upper bonus</span>
+          <strong><span id="upper-score">0</span><small> / 120</small></strong>
         </div>
         <div>
           <span>Bonus</span>
           <strong id="bonus-score">0</strong>
         </div>
       </div>
+      <div class="bonus-track" aria-label="Upper bonus progress"><span id="bonus-progress"></span></div>
       <div id="scorecard"></div>
+      <div id="score-confirm" class="score-confirm hidden" aria-live="polite">
+        <div><span>Selected play</span><strong id="selected-category">Choose a category</strong></div>
+        <button id="confirm-score" class="confirm-button" disabled>Confirm score</button>
+      </div>
     </aside>
   </main>
 
