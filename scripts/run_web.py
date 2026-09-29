@@ -41,7 +41,7 @@ def default_log_directory() -> Path:
     if override:
         return Path(override).expanduser()
     if FROZEN:
-        documents = Path(os.environ.get("USERPROFILE", Path.home())) / "Documents"
+        documents = Path.home() / "Documents"
         return documents / "NBA Roulette" / "playtest_logs"
     return ROOT / "playtest_logs"
 
@@ -174,6 +174,6 @@ if __name__ == "__main__":
         print("NBA Roulette could not start.", file=sys.stderr)
         print(f"Error details were saved to: {error_path}", file=sys.stderr)
         print(details, file=sys.stderr)
-        if FROZEN:
+        if FROZEN and sys.stdin and sys.stdin.isatty():
             input("Press Enter to close...")
         raise

@@ -112,23 +112,23 @@ Prototype v0.4 guarantees that every unlocked slot changes whenever a valid
 combined outcome permits it, and gives used scorecard categories an unmistakable
 filled and checked state.
 
-## Build the Windows external alpha
+## Build the Windows or Mac alpha
 
-The GitHub Actions workflow in `.github/workflows/build-windows-exe.yml` creates
-a single-file Windows launcher. It bundles the three game datasets and browser
-assets, selects an available local port, and opens the game automatically. The
-tester does not need GitHub, Python, or a command prompt.
+The GitHub Actions workflows build a Windows `.exe` and an Apple Silicon Mac
+`.app` with the v0.5 screen and three-reel animation. Both bundle the three
+game datasets and browser assets, select an available local port, and open the
+game automatically. Testers do not need Python or a command prompt.
 
-Run **Build Windows alpha** from the repository's Actions tab, download the
-resulting ZIP artifact, and send that ZIP to testers. See
-[`docs/EXTERNAL_ALPHA_WINDOWS.md`](docs/EXTERNAL_ALPHA_WINDOWS.md) for the exact
-tester instructions. Completed external-alpha games are stored on each tester's
-computer under `Documents\NBA Roulette\playtest_logs`.
+Run **Build Windows alpha v0.5** or **Build Mac alpha v0.5** from the Actions
+tab and send the resulting ZIP to testers. See
+[`docs/EXTERNAL_ALPHA_V0_5.md`](docs/EXTERNAL_ALPHA_V0_5.md) for the exact
+tester instructions. The previous v0.4 Windows workflow artifacts remain
+available in GitHub Actions history as legacy builds.
 
 Completed local games are automatically captured for **Playtest Batch 4 — v0.4
 External Alpha** in `playtest_logs/` as detailed JSONL plus a CSV summary. The
 folder is intentionally excluded from Git. Packaged Windows builds use the
-tester-facing Documents location described above.
+tester-facing Documents location described in the alpha instructions.
 
 ## Game design snapshot
 

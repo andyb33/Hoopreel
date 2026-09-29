@@ -1,8 +1,10 @@
-name: Build Windows alpha
+name: Build Windows alpha v0.5
 
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     tags:
       - "prototype-v*"
 
@@ -31,7 +33,7 @@ jobs:
         shell: cmd
         run: >-
           pyinstaller --noconfirm --clean --onefile
-          --name NBA-Roulette-v0.4-External-Alpha
+          --name NBA-Roulette-v0.5-Alpha
           --paths "."
           --collect-submodules nba_roulette
           --add-data "data/game;data/game"
@@ -41,7 +43,7 @@ jobs:
       - name: Smoke-test packaged launcher
         shell: pwsh
         run: |
-          $exe = Resolve-Path "dist/NBA-Roulette-v0.4-External-Alpha.exe"
+          $exe = Resolve-Path "dist/NBA-Roulette-v0.5-Alpha.exe"
           $process = Start-Process -FilePath $exe -ArgumentList "--no-open-browser", "--port", "38117" -PassThru
           try {
             $ready = $false
@@ -50,6 +52,10 @@ jobs:
               try {
                 $state = Invoke-RestMethod -Uri "http://127.0.0.1:38117/api/state"
                 if ($state.turn -eq 1 -and $state.turns_total -eq 14) {
+                  $page = Invoke-WebRequest -Uri "http://127.0.0.1:38117/" -UseBasicParsing
+                  if ($page.Content -notmatch 'reel-window') {
+                    throw "Packaged launcher is missing the v0.5 roulette UI."
+                  }
                   $ready = $true
                   break
                 }
@@ -70,13 +76,13 @@ jobs:
 
       - name: Add tester instructions
         shell: pwsh
-        run: Copy-Item docs/EXTERNAL_ALPHA_WINDOWS.md dist/README.txt
+        run: Copy-Item docs/EXTERNAL_ALPHA_V0_5.md dist/README.txt
 
       - name: Upload Windows build
         uses: actions/upload-artifact@v4
         with:
-          name: NBA-Roulette-v0.4-External-Alpha-Windows
+          name: NBA-Roulette-v0.5-Alpha-Windows
           path: |
-            dist/NBA-Roulette-v0.4-External-Alpha.exe
+            dist/NBA-Roulette-v0.5-Alpha.exe
             dist/README.txt
           if-no-files-found: error

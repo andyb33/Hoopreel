@@ -1,0 +1,76 @@
+name: Build Mac alpha v0.5
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - "prototype-v*"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install packager
+        run: python -m pip install --disable-pip-version-check pyinstaller==6.16.0
+
+      - name: Run tests
+        run: python -m unittest discover -v
+
+      - name: Build Mac app
+        run: |
+          pyinstaller --noconfirm --clean --windowed --onedir \
+            --name NBA-Roulette-v0.5-Alpha \
+            --paths . \
+            --collect-submodules nba_roulette \
+            --add-data "data/game:data/game" \
+            --add-data "web/static:web/static" \
+            scripts/run_web.py
+
+      - name: Smoke-test packaged app
+        run: |
+          set -euo pipefail
+          executable="dist/NBA-Roulette-v0.5-Alpha.app/Contents/MacOS/NBA-Roulette-v0.5-Alpha"
+          "$executable" --no-open-browser --port 38117 &
+          app_pid=$!
+          trap 'kill "$app_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for attempt in {1..40}; do
+            if curl --fail --silent http://127.0.0.1:38117/api/state > /tmp/nba-roulette-state.json; then
+              python -c 'import json; s=json.load(open("/tmp/nba-roulette-state.json")); assert s["turn"] == 1 and s["turns_total"] == 14'
+              curl --fail --silent http://127.0.0.1:38117/ | grep -q 'reel-window'
+              ready=1
+              break
+            fi
+            if ! kill -0 "$app_pid" 2>/dev/null; then
+              echo "Packaged Mac app exited before serving the game"
+              exit 1
+            fi
+            sleep 0.5
+          done
+          test "$ready" -eq 1
+
+      - name: Package app and instructions
+        run: |
+          cp docs/EXTERNAL_ALPHA_V0_5.md dist/README.txt
+          cd dist
+          zip -q -r NBA-Roulette-v0.5-Alpha-Mac.zip NBA-Roulette-v0.5-Alpha.app README.txt
+
+      - name: Upload Mac build
+        uses: actions/upload-artifact@v4
+        with:
+          name: NBA-Roulette-v0.5-Alpha-Mac
+          path: dist/NBA-Roulette-v0.5-Alpha-Mac.zip
+          if-no-files-found: error
