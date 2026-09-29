@@ -114,8 +114,8 @@ filled and checked state.
 
 ## Build the Windows or Mac alpha
 
-The GitHub Actions workflows build a Windows `.exe` and an Apple Silicon Mac
-`.app` with the v0.5 screen and three-reel animation. Both bundle the three
+The GitHub Actions workflows build a Windows `.exe` and separate Apple Silicon
+and Intel Mac `.app` artifacts with the v0.5 screen and three-reel animation. They bundle the three
 game datasets and browser assets, select an available local port, and open the
 game automatically. Testers do not need Python or a command prompt.
 

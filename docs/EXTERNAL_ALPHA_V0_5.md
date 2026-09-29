@@ -12,7 +12,8 @@ Windows
 
 Mac
 ---
-1. Extract the downloaded artifact ZIP, then extract `NBA-Roulette-v0.5-Alpha-Mac.zip`.
+1. Pick the Apple Silicon or Intel artifact to match your Mac. Extract the
+   downloaded artifact ZIP, then extract the Mac ZIP inside it.
 2. Move `NBA-Roulette-v0.5-Alpha.app` to Applications or leave it in the extracted folder.
 3. Open the app. Your default browser should open the game automatically.
 4. To stop it, quit the app from the Dock or Activity Monitor.
@@ -20,8 +21,7 @@ Mac
 The Mac app is currently unsigned and not notarized. macOS may block the first launch.
 Use Finder's Open command from the app's context menu and follow the macOS prompt
 if you trust the sender. If macOS refuses to open it, ask for a signed build.
-The GitHub `macos-latest` runner produces an Apple Silicon build; Intel Macs
-need a separate build.
+The two Mac artifacts are built separately for Apple Silicon and Intel Macs.
 
 No Python or GitHub account is needed to play. The game serves only to your
 computer at 127.0.0.1; it does not publish your playtest to the Internet.
