@@ -31,6 +31,6 @@ New installations save logs to `Documents/Hoopreel/playtest_logs`. If an old
 there until a Hoopreel folder is created. No logs are moved or deleted.
 `HOOPREEL_LOG_DIR` is the preferred override; `NBA_ROULETTE_LOG_DIR` still works.
 
-The repository URL, Python package `nba_roulette`, dataset filenames, and
-playtest batch identifiers remain stable technical identifiers. This avoids
-breaking historical links, imports, or evidence during a branding change.
+The repository is now [andyb33/Hoopreel](https://github.com/andyb33/Hoopreel).
+The Python package `nba_roulette`, dataset filenames, and playtest batch
+identifiers remain stable technical identifiers to preserve imports and evidence.

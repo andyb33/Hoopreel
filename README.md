@@ -2,6 +2,8 @@
 
 **Spin. Keep. Score.**
 
+[GitHub repository](https://github.com/andyb33/Hoopreel)
+
 <img src="web/static/brand-mark.svg" alt="Hoopreel symbol" width="96">
 
 Hoopreel is a Yahtzee-inspired NBA strategy game built around historical
