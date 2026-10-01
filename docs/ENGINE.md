@@ -1,4 +1,4 @@
-# NBA Roulette — Core Engine
+# Hoopreel — Core Engine
 
 The core engine implements the rules independently of any web interface or
 simulation strategy. This keeps probability, scoring, and game-state behavior

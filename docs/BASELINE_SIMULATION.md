@@ -1,4 +1,4 @@
-# NBA Roulette — Random and Greedy Baselines
+# Hoopreel — Random and Greedy Baselines
 
 This report establishes two reproducible, non-strategic full-game baselines
 before introducing lock-aware play.

@@ -1,4 +1,4 @@
-NBA Roulette v0.4 — External Alpha (Windows)
+Legacy build: NBA Roulette v0.4 — External Alpha (Windows)
 ================================================
 
 HOW TO PLAY

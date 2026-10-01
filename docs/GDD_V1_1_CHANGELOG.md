@@ -1,4 +1,4 @@
-# NBA Roulette — GDD v1.1 Change Log
+# Hoopreel — GDD v1.1 Change Log
 
 GDD v1.1 preserves every v1.0 rule except the Upper Bonus threshold.
 

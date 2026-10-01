@@ -1,6 +1,10 @@
-# NBA Roulette
+# Hoopreel
 
-NBA Roulette is a Yahtzee-inspired NBA strategy game built around historical
+**Spin. Keep. Score.**
+
+<img src="web/static/brand-mark.svg" alt="Hoopreel symbol" width="96">
+
+Hoopreel is a Yahtzee-inspired NBA strategy game built around historical
 player-team-season statistics, accolades, games played, and jersey numbers.
 
 ## Current status
@@ -119,7 +123,7 @@ and Intel Mac `.app` artifacts with the v0.5 screen and three-reel animation. Th
 game datasets and browser assets, select an available local port, and open the
 game automatically. Testers do not need Python or a command prompt.
 
-Run **Build Windows alpha v0.5** or **Build Mac alpha v0.5** from the Actions
+Run **Build Hoopreel Windows alpha v0.5** or **Build Hoopreel Mac alpha v0.5** from the Actions
 tab and send the resulting ZIP to testers. See
 [`docs/EXTERNAL_ALPHA_V0_5.md`](docs/EXTERNAL_ALPHA_V0_5.md) for the exact
 tester instructions. The previous v0.4 Windows workflow artifacts remain

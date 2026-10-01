@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the local NBA Roulette browser prototype without external packages."""
+"""Run the local Hoopreel browser prototype without external packages."""
 
 from __future__ import annotations
 
@@ -37,12 +37,15 @@ RECORDS = load_records(data_dir=ROOT / "data" / "game")
 
 def default_log_directory() -> Path:
     """Keep packaged playtest evidence outside PyInstaller's temporary folder."""
-    override = os.environ.get("NBA_ROULETTE_LOG_DIR")
+    override = os.environ.get("HOOPREEL_LOG_DIR") or os.environ.get("NBA_ROULETTE_LOG_DIR")
     if override:
         return Path(override).expanduser()
     if FROZEN:
         documents = Path.home() / "Documents"
-        return documents / "NBA Roulette" / "playtest_logs"
+        legacy = documents / "NBA Roulette" / "playtest_logs"
+        current = documents / "Hoopreel" / "playtest_logs"
+        # Keep an existing batch in one location without moving anyone's files.
+        return legacy if legacy.exists() and not current.exists() else current
     return ROOT / "playtest_logs"
 
 
@@ -57,6 +60,7 @@ ASSETS = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
     "/styles.css": ("styles.css", "text/css; charset=utf-8"),
+    "/brand-mark.svg": ("brand-mark.svg", "image/svg+xml"),
 }
 
 
@@ -139,19 +143,19 @@ def main() -> None:
         "--open-browser",
         action=argparse.BooleanOptionalAction,
         default=FROZEN,
-        help="Open NBA Roulette in the default browser after startup",
+        help="Open Hoopreel in the default browser after startup",
     )
     args = parser.parse_args()
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     port = server.server_address[1]
     url = f"http://{args.host}:{port}"
-    print(f"NBA Roulette running at {url}")
+    print(f"Hoopreel running at {url}")
     print(
         f"Playtest batch: {PLAYTEST_LOGGER.batch_name} "
         f"({PLAYTEST_LOGGER.completed_count()}/{PLAYTEST_LOGGER.target})"
     )
     print(f"Logs: {PLAYTEST_LOGGER.directory}")
-    print("Keep this window open while playing. Close it to stop NBA Roulette.")
+    print("Keep this window open while playing. Close it to stop Hoopreel.")
     if args.open_browser:
         threading.Timer(0.6, webbrowser.open, args=(url,)).start()
     try:
@@ -171,7 +175,7 @@ if __name__ == "__main__":
         error_directory.mkdir(parents=True, exist_ok=True)
         error_path = error_directory / "launcher_error.txt"
         error_path.write_text(details, encoding="utf-8")
-        print("NBA Roulette could not start.", file=sys.stderr)
+        print("Hoopreel could not start.", file=sys.stderr)
         print(f"Error details were saved to: {error_path}", file=sys.stderr)
         print(details, file=sys.stderr)
         if FROZEN and sys.stdin and sys.stdin.isatty():

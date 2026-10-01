@@ -48,6 +48,7 @@ h1, h2, h3, p { margin: 0; }
 
 .brand-lockup, .header-actions { display: flex; align-items: center; }
 .brand-lockup { gap: 14px; }
+.brand-symbol { width: 48px; height: 48px; flex: 0 0 48px; }
 .brand-mark {
   position: relative;
   width: 48px;
@@ -336,6 +337,7 @@ dialog h2 { margin-top: 8px; font: 900 38px/1 var(--display); text-transform: up
 @media (max-width: 600px) {
   .topbar { min-height: 76px; padding: 14px 16px; }
   .brand-mark { width: 40px; height: 40px; flex-basis: 40px; }
+  .brand-symbol { width: 40px; height: 40px; flex-basis: 40px; }
   .brand-mark span { width: 48px; left: -4px; top: 11px; }
   h1 { font-size: 25px; }
   .eyebrow, .turn-chip span { font-size: 8px; }

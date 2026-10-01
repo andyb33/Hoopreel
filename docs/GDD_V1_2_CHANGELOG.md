@@ -1,4 +1,4 @@
-# NBA Roulette — GDD v1.2 Change Log
+# Hoopreel — GDD v1.2 Change Log
 
 GDD v1.2 records the decisions made after Human Playtest 1. All other v1.1
 rules remain unchanged.

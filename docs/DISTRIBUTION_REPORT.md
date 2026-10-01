@@ -1,4 +1,4 @@
-# NBA Roulette — Three-Season Distribution Report
+# Hoopreel — Three-Season Distribution Report
 
 - **Seasons:** 2023–24 through 2025–26
 - **Eligible player-team-season records:** 1346

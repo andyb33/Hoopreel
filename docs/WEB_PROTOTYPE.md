@@ -1,4 +1,4 @@
-# NBA Roulette — Minimal Browser Prototype
+# Hoopreel — Minimal Browser Prototype
 
 The first browser prototype is a deliberately small interface for validating
 the game loop before investing in production visuals or animation.
@@ -10,7 +10,7 @@ python scripts/run_web.py
 ```
 
 Open `http://127.0.0.1:8000` in a browser. The server uses only Python's
-standard library and the existing NBA Roulette package.
+standard library and the existing Hoopreel package.
 
 ## Included
 
@@ -95,4 +95,4 @@ local files:
 The external-alpha logger accepts up to 100 completed games per computer.
 Starting or abandoning an unfinished game does not consume a batch slot. Source
 runs use the repository's `playtest_logs/` directory; packaged Windows builds
-use `Documents\NBA Roulette\playtest_logs`. Both locations are kept outside Git.
+use `Documents\Hoopreel\playtest_logs`. Both locations are kept outside Git.

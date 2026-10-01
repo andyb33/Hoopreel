@@ -1,4 +1,4 @@
-# NBA Roulette — Upper Bonus Sensitivity
+# Hoopreel — Upper Bonus Sensitivity
 
 This experiment varies only the heuristic value assigned to progress in each
 upper category. Roulette rules, locks, score values, seeds, and dataset remain

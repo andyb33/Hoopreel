@@ -1,1 +1,1 @@
-"""NBA Roulette engine tests."""
+"""Hoopreel engine tests."""

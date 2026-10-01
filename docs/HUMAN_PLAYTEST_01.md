@@ -1,4 +1,4 @@
-# NBA Roulette — Human Playtest 1
+# Hoopreel — Human Playtest 1
 
 **Date:** 2026-09-17  
 **Build:** GDD v1.1 terminal prototype  

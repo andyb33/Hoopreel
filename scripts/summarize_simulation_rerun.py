@@ -20,7 +20,7 @@ def main() -> None:
     old_strategic = strategic_payload["two_season_baseline"]["strategic"]
 
     lines = [
-        "# NBA Roulette — Three-Season Simulation Rerun",
+        "# Hoopreel — Three-Season Simulation Rerun",
         "",
         "- **Pool:** 1,346 eligible player-team-season records",
         "- **Seasons:** 2023–24 through 2025–26",

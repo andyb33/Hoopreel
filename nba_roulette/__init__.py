@@ -1,4 +1,4 @@
-"""Core NBA Roulette game engine."""
+"""Core Hoopreel game engine."""
 
 from .data import load_records
 from .game import GameState

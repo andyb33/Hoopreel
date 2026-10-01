@@ -1,4 +1,4 @@
-name: Build Windows alpha v0.5
+name: Build Hoopreel Windows alpha v0.5
 
 on:
   workflow_dispatch:
@@ -33,7 +33,8 @@ jobs:
         shell: cmd
         run: >-
           pyinstaller --noconfirm --clean --onefile
-          --name NBA-Roulette-v0.5-Alpha
+          --name Hoopreel-v0.5-Alpha
+          --icon web/static/app-icon.ico
           --paths "."
           --collect-submodules nba_roulette
           --add-data "data/game;data/game"
@@ -43,7 +44,7 @@ jobs:
       - name: Smoke-test packaged launcher
         shell: pwsh
         run: |
-          $exe = Resolve-Path "dist/NBA-Roulette-v0.5-Alpha.exe"
+          $exe = Resolve-Path "dist/Hoopreel-v0.5-Alpha.exe"
           $process = Start-Process -FilePath $exe -ArgumentList "--no-open-browser", "--port", "38117" -PassThru
           try {
             $ready = $false
@@ -81,8 +82,8 @@ jobs:
       - name: Upload Windows build
         uses: actions/upload-artifact@v4
         with:
-          name: NBA-Roulette-v0.5-Alpha-Windows
+          name: Hoopreel-v0.5-Alpha-Windows
           path: |
-            dist/NBA-Roulette-v0.5-Alpha.exe
+            dist/Hoopreel-v0.5-Alpha.exe
             dist/README.txt
           if-no-files-found: error

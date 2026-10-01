@@ -1,4 +1,4 @@
-"""NBA Roulette scorecard categories and deterministic score calculations."""
+"""Hoopreel scorecard categories and deterministic score calculations."""
 
 from __future__ import annotations
 
